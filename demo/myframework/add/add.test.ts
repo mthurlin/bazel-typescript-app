@@ -1,5 +1,7 @@
+import { add } from "./add";
+
 describe("Add", () => {
-    it("can test", () => {
-        expect(2).toEqual(2);
-    })
+  it("can test", () => {
+    expect(add("foo", "bar")).toEqual("foobar");
+  });
 });

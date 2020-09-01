@@ -4,13 +4,12 @@ load("@build_bazel_rules_nodejs//internal/npm_install:npm_umd_bundle.bzl", "npm_
 load("@npm//webpack-cli:index.bzl", webpack = "webpack_cli")
 load("@npm//http-server:index.bzl", "http_server")
 
+# Issue - The need to do this manually for each dependency we need in the ts_devserver seems strange
 npm_umd_bundle(
     name = "react_umd",
     package_name = "react",
     entry_point = "@npm//:node_modules/react/umd/react.development.js",
-    excluded = [
-        "react-dom",
-    ],
+    excluded = ["react-dom"],
     package = "@npm//react",
 )
 
@@ -18,9 +17,7 @@ npm_umd_bundle(
     name = "react-dom_umd",
     package_name = "react-dom",
     entry_point = "@npm//:node_modules/react-dom/umd/react-dom.development.js",
-    excluded = [
-        "react",
-    ],
+    excluded = ["react"],
     package = "@npm//react-dom",
 )
 
@@ -28,8 +25,7 @@ npm_umd_bundle(
     name = "base-64_umd",
     package_name = "base-64",
     entry_point = "@npm//:node_modules/base-64/base64.js",
-    excluded = [
-    ],
+    excluded = [],
     package = "@npm//base-64",
 )
 
@@ -42,9 +38,12 @@ ts_library(
 ts_devserver(
     name = "dev-server",
     entry_module = "demo/demo/bundle/entry",
+    # Issue - Can the dependencies be specified in ts_library instead?
+    # And collected automatically by ts_devserver. Feels strange to have to specify them all again here.
     deps = [":entry", ":react.umd.js", ":react-dom.umd.js", ":base-64.umd.js"]
 )
 
+# Issue - Why do we need to specify all transitive dependencies here? (Without it, webpack complains of missing files)
 filegroup(
  name = "prod-sources",
  srcs= [
@@ -57,8 +56,6 @@ filegroup(
  output_group = "es6_sources"
 )
 
-
-# This does not work properly
 webpack(
     name = "prod-bundle",
     outs = ["bundle.js"],
@@ -72,7 +69,7 @@ webpack(
     data = [
         ":prod-sources",
         "webpack.config.js",
-        "@npm//:node_modules",
+        "@npm//:node_modules", # TODO: More fine-grained dependencies perhaps?
     ],
 )
 

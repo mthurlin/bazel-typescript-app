@@ -1,6 +1,6 @@
 package(default_visibility=["//visibility:public"])
 load("@npm//@bazel/typescript:index.bzl", "ts_library")
-load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("//demo/myapp:ts_react_test.bzl", "ts_react_test")
 
 ts_library(
    name = "home",
@@ -8,13 +8,8 @@ ts_library(
    deps = ["//demo/myframework/doublestring:doublestring", "@npm//@types/react"]
 )
 
-ts_library(
-   name = "footer-test",
-   srcs = ["footer.test.tsx"],
-   deps = ["@npm//@types/jasmine", "//demo/myapp:test-setup", "@npm//@testing-library/react", "@npm//@types/react", "@npm//@types/react-dom", "@npm//react", "@npm//react-dom", ":home"]
-)
-
-jasmine_node_test(
-   name = "test",
-   srcs = [":footer-test"]
+ts_react_test(
+    name = "test",
+    srcs = ["footer.test.tsx"],
+    deps = [":home"]
 )

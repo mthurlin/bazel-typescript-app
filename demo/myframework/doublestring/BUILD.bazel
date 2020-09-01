@@ -1,6 +1,6 @@
 package(default_visibility=["//visibility:public"])
 load("@npm//@bazel/typescript:index.bzl", "ts_library")
-load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("//demo:ts_test.bzl", "ts_test")
 
 ts_library(
    name = "doublestring",
@@ -8,13 +8,8 @@ ts_library(
    deps = ["//demo/myframework/add:add", "@npm//base-64", "@npm//@types/base-64"]
 )
 
-ts_library(
-   name = "doublestring-test",
-   srcs = ["doublestring.test.ts"],
-   deps = ["@npm//@types/jasmine", ":doublestring"]
-)
-
-jasmine_node_test(
-   name = "test",
-   srcs = [":doublestring-test"]
+ts_test(
+    name = "test",
+    srcs = ["doublestring.test.ts"],
+    deps = [":doublestring"]
 )
