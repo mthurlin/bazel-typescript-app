@@ -1,7 +1,10 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
 import { Main } from "../myapp/main/main";
-console.log("Rendering....");
+
+// Hack
+(React as any).default = React;
+
 const div = document.createElement("div");
 document.body.appendChild(div);
 ReactDOM.render(<Main />, div);

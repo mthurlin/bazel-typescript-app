@@ -45,19 +45,32 @@ ts_devserver(
     deps = [":entry", ":react.umd.js", ":react-dom.umd.js", ":base-64.umd.js"]
 )
 
+filegroup(
+ name = "prod-sources",
+ srcs= [
+    ":entry",
+    "//demo/myapp/home:home",
+    "//demo/myapp/main:main",
+    "//demo/myframework/add:add",
+    "//demo/myframework/doublestring:doublestring"
+ ],
+ output_group = "es6_sources"
+)
+
+
 # This does not work properly
 webpack(
     name = "prod-bundle",
     outs = ["bundle.js"],
     args = [
-        "$(location :entry)",
+        "$(locations :prod-sources)",
         "--config",
         "$(location webpack.config.js)",
         "-o",
         "$@",
     ],
     data = [
-        ":entry",
+        ":prod-sources",
         "webpack.config.js",
         "@npm//:node_modules",
     ],
