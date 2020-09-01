@@ -1,8 +1,20 @@
 package(default_visibility=["//visibility:public"])
 load("@npm//@bazel/typescript:index.bzl", "ts_library")
+load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
 
 ts_library(
    name = "add",
    srcs = ["add.ts", "base64.ts"],
    deps = ["@npm//@types/base-64"]
+)
+
+ts_library(
+   name = "add-test",
+   srcs = ["add.test.ts"],
+   deps = ["@npm//@types/base-64", "@npm//@types/jasmine", ":add"]
+)
+
+jasmine_node_test(
+   name = "test",
+   srcs = [":add-test"]
 )

@@ -5,9 +5,16 @@
     "dependencies": {
         "@babel/core": "^7.11.5",
         "@babel/preset-env": "^7.11.5",
+        "@bazel/jasmine": "^2.0.3",
+        "@testing-library/react": "^10.4.9",
+        "@types/jasmine": "^3.5.14",
+        "@types/jsdom": "^16.2.3",
         "babel-loader": "^8.1.0",
         "base-64": "0.1.0",
         "http-server": "^0.12.3",
+        "jasmine": "^3.6.1",
+        "jasmine-core": "^3.6.0",
+        "jsdom": "^16.4.0",
         "react": "16.13.1",
         "react-dom": "16.13.1",
         "webpack": "^4.44.1"
@@ -27,6 +34,7 @@
     "scripts": {
         "build": "bazel build //...",
         "test": "bazel test //...",
+        "testwatcher": "ibazel test //...",
         "devserver": "ibazel -nolive_reload run //demo/bundle:dev-server",
         "prodserver": "ibazel -nolive_reload run //demo/bundle:prod-server",
         "bundle": "bazel build //demo/bundle:prod-bundle"
