@@ -11,6 +11,7 @@
         "@types/jsdom": "^16.2.3",
         "babel-loader": "^8.1.0",
         "base-64": "0.1.0",
+        "c8": "^7.3.0",
         "http-server": "^0.12.3",
         "jasmine": "^3.6.1",
         "jasmine-core": "^3.6.0",
@@ -34,6 +35,8 @@
     "scripts": {
         "build": "bazel build //...",
         "test": "bazel test //...",
+        "query": "bazel query",
+        "coverage": "bazel coverage --combined_report=lcov `bazel query 'tests(//...) except filter(prettier, tests(//...))'` && cat bazel-out/_coverage/_coverage_report.dat",
         "testwatcher": "ibazel test //...",
         "devserver": "ibazel -nolive_reload run //demo/bundle:dev-server",
         "prodserver": "ibazel -nolive_reload run //demo/bundle:prod-server",

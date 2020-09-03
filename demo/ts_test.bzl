@@ -5,10 +5,11 @@ def ts_test(name, srcs, deps):
     ts_library(
        name = name + "-lib",
        srcs = srcs,
-       deps = ["@npm//@types/jasmine"] + deps
+       deps = ["@npm//@types/jasmine", "@npm//c8"] + deps
     )
 
     jasmine_node_test(
        name = name,
-       srcs = [":" + name + "-lib"]
+       srcs = [":" + name + "-lib"],
+       deps = ["@npm//c8"]
     )

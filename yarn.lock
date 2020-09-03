@@ -1665,6 +1665,25 @@ builtin-status-codes@^3.0.0:
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
   integrity sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
 
+c8@^7.3.0:
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/c8/-/c8-7.3.0.tgz#8f3824f5434339805b302b7c089525a4087b259e"
+  integrity sha512-DEWiHtepo/KB50K+gw2z5MWnQbgzACy8xqTREBmAAg4j5UOlkmDeJfl8jWjk2iDTDaJfXR0sbnqx7iNCwgsblQ==
+  dependencies:
+    "@bcoe/v8-coverage" "^0.2.3"
+    "@istanbuljs/schema" "^0.1.2"
+    find-up "^4.0.0"
+    foreground-child "^2.0.0"
+    furi "^2.0.0"
+    istanbul-lib-coverage "^3.0.0"
+    istanbul-lib-report "^3.0.0"
+    istanbul-reports "^3.0.2"
+    rimraf "^3.0.0"
+    test-exclude "^6.0.0"
+    v8-to-istanbul "^5.0.0"
+    yargs "^15.0.0"
+    yargs-parser "^18.0.0"
+
 c8@~7.1.0:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/c8/-/c8-7.1.2.tgz#3fd785e8d264175ceffe92c74607f5cfb12f018d"
@@ -4910,6 +4929,15 @@ v8-to-istanbul@^4.1.2:
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/v8-to-istanbul/-/v8-to-istanbul-4.1.4.tgz#b97936f21c0e2d9996d4985e5c5156e9d4e49cd6"
   integrity sha512-Rw6vJHj1mbdK8edjR7+zuJrpDtKIgNdAvTSAcpYfgMIw+u2dPDntD3dgN4XQFLU2/fvFQdzj+EeSGfd/jnY5fQ==
+  dependencies:
+    "@types/istanbul-lib-coverage" "^2.0.1"
+    convert-source-map "^1.6.0"
+    source-map "^0.7.3"
+
+v8-to-istanbul@^5.0.0:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/v8-to-istanbul/-/v8-to-istanbul-5.0.1.tgz#0608f5b49a481458625edb058488607f25498ba5"
+  integrity sha512-mbDNjuDajqYe3TXFk5qxcQy8L1msXNE37WTlLoqqpBfRsimbNcrlhQlDPntmECEcUvdC+AQ8CyMMf6EUx1r74Q==
   dependencies:
     "@types/istanbul-lib-coverage" "^2.0.1"
     convert-source-map "^1.6.0"
