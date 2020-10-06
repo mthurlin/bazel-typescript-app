@@ -1,0 +1,9 @@
+package(default_visibility=["//visibility:public"])
+load("@build_bazel_rules_nodejs//:index.bzl", "js_library", "nodejs_binary")
+
+js_library(
+   name = "myjslib",
+   srcs = ["mylib.js", "mylib.d.ts"],
+   package_name = "myjslib",
+   deps = []
+)

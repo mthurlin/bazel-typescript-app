@@ -5,7 +5,7 @@ load("//demo/myapp:ts_react_test.bzl", "ts_react_test")
 ts_library(
    name = "home",
    srcs = ["home.tsx", "footer.tsx"],
-   deps = ["//demo/myframework/doublestring:doublestring", "@npm//@types/react"]
+   deps = ["//demo/myframework/doublestring:doublestring", "//demo/myjslib:myjslib", "@npm//@types/react"]
 )
 
 ts_react_test(

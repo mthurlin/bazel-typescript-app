@@ -3,6 +3,11 @@
     "jsx": "react",
     "esModuleInterop": true,
     "jsxFactory": "React.default.createElement",
-    "strict": true
+    "strict": true,
+    "baseUrl": ".",
+    // For IDE completion
+    "paths": {
+      "myjslib/*": ["demo/myjslib/*"]
+    }
   }
 }
